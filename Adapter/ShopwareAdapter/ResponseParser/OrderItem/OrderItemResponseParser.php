@@ -20,8 +20,10 @@ class OrderItemResponseParser implements OrderItemResponseParserInterface
     use GetAttributeTrait;
 
     const ITEM_TYPE_ID_VOUCHER = 2;
-    const ITEM_TYPE_ID_DISCOUNT = 3;
-    const ITEM_TYPE_ID_SURCHARGE = 4;
+    const ITEM_TYPE_ID_COUPON = 3;
+    const ITEM_TYPE_ID_DISCOUNT = 4;
+    const ITEM_TYPE_ID_SURCHARGE = 5;
+    const ITEM_TYPE_ID_SHIPPING = 6;
 
     /**
      * @var EntityRepository
@@ -114,8 +116,12 @@ class OrderItemResponseParser implements OrderItemResponseParserInterface
                 return OrderItem::TYPE_VOUCHER;
             case self::ITEM_TYPE_ID_DISCOUNT:
                 return OrderItem::TYPE_DISCOUNT;
+            case self::ITEM_TYPE_ID_COUPON:
+                return OrderItem::TYPE_COUPON;
             case self::ITEM_TYPE_ID_SURCHARGE:
                 return OrderItem::TYPE_PAYMENT_SURCHARGE;
+            case self::ITEM_TYPE_ID_SHIPPING:
+                return OrderItem::TYPE_SHIPPING_COSTS;
             default:
                 return OrderItem::TYPE_PRODUCT;
         }
